@@ -4,14 +4,17 @@ const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
 
+//Load environment variables.
+require('dotenv').config()
+
 const productRoute = require('./routes/api/productRoute');
 
-// Connecting to the Database
-let mongodb_url = 'mongodb://localhost/';
-let dbName = 'yolomy';
+// // Connecting to the Database
+// let mongodb_url = 'mongodb://localhost/';
+// let dbName = 'yolomy';
 
 // define a url to connect to the database
-const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
+const MONGODB_URI = process.env.MONGODB_URI 
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
 let db = mongoose.connection;
 
