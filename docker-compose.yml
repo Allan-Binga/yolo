@@ -1,26 +1,49 @@
+version: "3.8"
+
 services:
-  client:
+  allanbinga-yolo-client:
+    image: allanbinga/yolo-client:v1.0.0
     build: ./client
+    container_name: yolo-client
+    stdin_open: true
+    tty: true
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-
-  backend:
+    depends_on: 
+      - allanbinga-yolo-backend
+    networks:
+      - yolo-net
+  
+  allanbinga-yolo-backend:
+    image: allanbinga/yolo-backend:v1.0.0
     build: ./backend
+    container_name: yolo-backend
+    stdin_open: true
+    tty: true
+    restart: always
     ports:
       - "5000:5000"
-    depends_on:
-      - mongo
-    environment:
-      MONGO_URL: mongodb://mongo:27017/mydatabase
-
-  mongo:
-    image: mongo:4.4
+    depends_on: 
+      - app-ip-mongo
+    networks:
+      - yolo-net
+  
+  app-ip-mongo:
+    image: mongo
+    container_name: app-mongo
     ports:
       - "27017:27017"
+    networks:
+      - yolo-net
     volumes:
-      - mongo-data:/data/db
+      - type: volume
+        source: app-mongo-data
+        target: /data/db
+
+networks:
+  yolo-net:
+    external: true  
 
 volumes:
-  mongo-data:
+  app-mongo-data:
+    driver: local
