@@ -118,11 +118,11 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - app-network
+      - yolo-network
 
 networks:
-  app-network:
-    driver: bridge
+  yolo-net:
+    external: true
 ```
 In this setup, the backend container is exposed on port 5000 of the host, the client container on port 3000, and the MongoDB container on port 27017. All services are interconnected through the app-network bridge, facilitating seamless communication between them.
 
@@ -157,4 +157,5 @@ To achieve the task the following git workflow was used:
 9. Deleted the parent explanation.md file: `git commit -m "Deleted parent explanation.md file"`
 10. Created explanation.md file: `"Created explanation.md file."`
 11. Build the docker images: `git commit -m "Sudo docker-compose build"`
+12. Push the docker images to dockerhub: `git commit -m ""`
 
