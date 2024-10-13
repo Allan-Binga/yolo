@@ -93,8 +93,8 @@ CMD ["npm", "start"]
 
 ```
 
-## 3. Docker Compose Networking
-The (docker-compose.yml) defines the networking configuration for the project. It includes the allocation of application ports. The relevant sections are as follows:
+## 3. Docker Compose Networking COnfiguration
+The docker-compose.yml file specifies the networking setup for the application, including how ports are allocated for each service. The key sections are outlined below:
 
 
 ```
@@ -118,13 +118,13 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - yolo-network
+      - app-network
 
 networks:
-  yolo-network:
+  app-network:
     driver: bridge
 ```
-In this configuration, the backend container is mapped to port 5000 of the host, the client container is mapped to port 3000 of the host, and mongodb container is mapped to port 27017 of the host. All containers are connected to the yolo-network bridge network.
+In this setup, the backend container is exposed on port 5000 of the host, the client container on port 3000, and the MongoDB container on port 27017. All services are interconnected through the app-network bridge, facilitating seamless communication between them.
 
 
 ## 4.  Docker Compose Volume Definition and Usage
