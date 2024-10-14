@@ -34,8 +34,8 @@ docker pull allanbinga/yolo-backend:v1.0.0
 docker pull allanbinga/yolo-client:v1.0.0
 
 ## Sizes of the images are as follows(screenshots):
-![Alt text](./images/yolo-backend.png) - For the backend 
-![Alt text](./images/yolo-client.png) - FOr the client
+![Alt text](./images/yolo-backend.png) - For the backend image
+![Alt text](./images/yolo-client.png) - For the client image
 
 
 
