@@ -157,5 +157,8 @@ To achieve the task the following git workflow was used:
 9. Deleted the parent explanation.md file: `git commit -m "Deleted parent explanation.md file"`
 10. Created explanation.md file: `"Created explanation.md file."`
 11. Build the docker images: `git commit -m "Sudo docker-compose build"`
-12. Push the docker images to dockerhub: `git commit -m ""`
-
+12. Push the docker images to dockerhub: `git commit -m "Images pushed to docker"`
+13. Added an external network : `git commit -m "Added an external network"`
+14. Added a README.md file with project explanation : `git commit -m "Added a README.md file with project explanation"`
+15. Added screenshots of images in DockerHub: `git commit -m "Added screenshots of images in DockerHub"`
+16. Pushed the project to GitHub - `git push -u origin master`

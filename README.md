@@ -21,11 +21,11 @@ This project is a microservices-based e-commerce application that utilizes Docke
     git clone <https://github.com/Allan-Binga/yolo>
     cd 'yolo'
 
-2. BUild the docker images
+2. Build the docker images
 docker-compose build
 
-3. STart the services
-docker compose-up
+3. Start the services
+docker-compose up
 
 4. Access the yolo application in your web browser at <http://localhost:3000/>
 
