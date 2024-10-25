@@ -1,0 +1,15 @@
+- name: Pull image from DockerHub repository
+  docker_image:
+    name: allanbinga/yolo-client:v1.0.0
+    source: pull
+
+- name: Create a nodejs client container.
+  docker_container:
+    name: yolo-client
+    image: allanbinga/yolo-client:v1.0.0
+    networks:
+      - name: yolo-net
+    ports:
+      - "3000:3000"
+    command: "npm start"
+  become: yes
