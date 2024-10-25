@@ -1,0 +1,17 @@
+---
+- name: Ansible playbook to clone GitHub repository and run Yolo application
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Clone the Yolo application repository
+      git:
+        repo: "https://github.com/Allan-Binga/yolo.git"
+        dest: "/var/www/html/yolo-app"
+        update: yes
+      tags: clone
+
+  roles:
+    - client-rendering
+    - mongo-db-rendering
+    - server-rendering
