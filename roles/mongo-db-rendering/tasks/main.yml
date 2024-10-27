@@ -1,4 +1,8 @@
----
+- name: Create Docker network
+  docker_network:
+    name: yolo-net
+    state: present
+    
 - name: Run MongoDB Container
   docker_container:
     name: app-mongo

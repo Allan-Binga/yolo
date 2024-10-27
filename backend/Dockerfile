@@ -18,7 +18,7 @@ FROM alpine:3.16.7
 
 WORKDIR /app
 
-RUN apk update && apk add --update nodejs
+RUN apk update && apk add npm
 
 COPY --from=build /usr/src/app /app
 
@@ -26,4 +26,4 @@ COPY --from=build /usr/src/app /app
 EXPOSE 5000
 
 # Define the command to run your app
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
