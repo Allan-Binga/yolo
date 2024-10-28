@@ -33,7 +33,9 @@ This project sets up an automated Ansible configuration playbook that provisions
 
 4. Usage:
 After provisioning, the playbook will automatically run the necessary tasks to set up the application. Once complete, access the application in your web browser at:
+```bash
   http://localhost:3000
+```
 
 5. I was able to provision up the playbook and added products listed below;
 ![Alt text](./images/products.png)               
