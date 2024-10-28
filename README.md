@@ -1,44 +1,46 @@
-# YOLO Microservices E-Commerce Application
+# Automated Ansible Configuration Playbook
 
-## Project Overview
-This project is a microservices-based e-commerce application that utilizes Docker and Docker Compose to run a backend service, a client service, and a MongoDB database. The backend service handles product management, while the client service provides a user interface.
+## Overview
 
-## Features
-- Microservices architecture with separate backend and client services
-- Persistent data storage using MongoDB
-- Dockerized services for easy deployment and scalability
+This project sets up an automated Ansible configuration playbook that provisions a Vagrant virtual machine with the latest Ubuntu server (20.04) and deploys an e-commerce web application. The application includes a dashboard for managing retail products and provides functionality to add products via a user-friendly form.
 
-## Technologies Used
-- Docker
-- Docker Compose
-- Node.js (for backend)
-- MongoDB (for database)
-- React for the client side
+## Prerequisites
 
-## Setup Instructions
-1. Clone the repository
+- [Vagrant](https://www.vagrantup.com/downloads) installed on your machine.
+- [VirtualBox](https://www.virtualbox.org/) installed as the Vagrant provider.
+- Basic knowledge of Ansible and Vagrant.
 
-    git clone <https://github.com/Allan-Binga/yolo>
-    cd 'yolo'
+## Installation
 
-2. Build the docker images
-docker-compose build
+1. Clone this repository:
 
-3. Start the services
-docker-compose up
+   git clone git@github.com:Allan-Binga/yolo.git
+   cd yolo
 
-4. Access the yolo application in your web browser at <http://localhost:3000/>
+2. Initialize the Vagrant environment:
 
-## To Pull the Docker images from dockerhub:
-docker pull allanbinga/yolo-backend:v1.0.0
-docker pull allanbinga/yolo-client:v1.0.0
+   vagrant up
 
-## Sizes of the images are as follows(screenshots):
-![Alt text](./images/yolo-backend.png) - For the backend image
-![Alt text](./images/yolo-client.png) - For the client image
+3. Ensure that Ansible is installed within the VM by provisioning with the playbook. The playbook is organized as follows:
+ .
+├── playbook.yml                   # Main playbook file
+├── roles                          # Directory containing Ansible roles
+│   ├── client-rendering           # Role for client setup (e.g., Docker network, client container)
+│   │   ├── tasks                  # Task files for client setup
+│   │   └── vars                   # Variable files specific to client role
+│   ├── docker-setup               # Role for general Docker setup
+│   │   ├── tasks                  # Task files for Docker installation/configuration
+│   │   └── vars                   # Variable files specific to Docker setup
+│   ├── mongo-db-rendering         # Role for MongoDB setup and configuration
+│   │   ├── tasks                  # Task files for MongoDB setup
+│   │   └── vars                   # Variable files specific to MongoDB
+│   └── server-rendering           # Role for server setup (e.g., API, backend services)
+│       ├── tasks                  # Task files for server setup
+│       └── vars                   # Variable files specific to server role
 
+4. Usage:
+After provisioning, the playbook will automatically run the necessary tasks to set up the application. Once complete, access the application in your web browser at:
+  http://localhost:3000
 
-
-# To run the application using Docker:
-docker-compose up
-
+5. I was able to provision up the playbook and added products listed below;
+![Alt text](./images/products.png)               
