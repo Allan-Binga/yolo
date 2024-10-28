@@ -22,6 +22,8 @@ This project sets up an automated Ansible configuration playbook that provisions
    ```bash
        cd yolo
 
+ ## Initialize vagrant       
+
 2. Initialize the Vagrant environment:
 ```bash
        vagrant up
