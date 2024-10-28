@@ -1,0 +1,9 @@
+---
+- name: Configure the application server
+  hosts: all
+  become: true
+  roles:
+    - docker-setup
+    - client-rendering
+    - mongo-db-rendering
+    - server-rendering

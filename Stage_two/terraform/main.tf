@@ -1,4 +1,3 @@
-# terraform/main.tf
 terraform {
   required_providers {
     vagrant = {
@@ -10,39 +9,22 @@ terraform {
 
 provider "vagrant" {}
 
-variable "vagrantfile_dir" {
-  description = "Directory containing the Vagrantfile"
-  type        = string
-  default     = "../"
-}
-
-resource "vagrant_vm" "server_vm" {
-  vagrantfile_dir = var.vagrantfile_dir
-  get_ports       = true
+resource "vagrant_vm" "simple_vm" {
+  vagrantfile_dir = "../" 
+  get_ports = true
 }
 
 resource "null_resource" "ansible_provision" {
-  depends_on = [vagrant_vm.server_vm]
+  depends_on = [vagrant_vm.simple_vm]
 
   provisioner "local-exec" {
     command = <<EOT
-      ANSIBLE_BECOME_PASS=${var.become_password} ansible-playbook -i ../ansible/inventory.ini ../ansible/playbook.yml
+      ANSIBLE_BECOME_PASS=${var.password} ansible-playbook -i ../ansible/inventory.ini ../ansible/playbook.yml
     EOT
   }
-
-  triggers = {
-    always_run = timestamp()
-  }
 }
 
-output "machine_names" {
-  value = vagrant_vm.server_vm.machine_names
+output "vm_ip" {
+  value = vagrant_vm.simple_vm.network_interface[0].ip_address
 }
 
-output "ssh_config" {
-  value = vagrant_vm.server_vm.ssh_config
-}
-
-output "ports" {
-  value = vagrant_vm.server_vm.ports
-}
