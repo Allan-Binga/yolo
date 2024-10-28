@@ -28,14 +28,20 @@ This project sets up an automated Ansible configuration playbook that provisions
 
 ```
 
-3. Ensure that Ansible is installed within the VM by provisioning with the playbook. The playbook is organized as follows:
+3. Once the VM is running, run the ansible playbook as follows:
+```bash
+       ansible-playbook -i inventory.yml playbook.yml
+
+```
+
+4. Ensure that Ansible is installed within the VM by provisioning with the playbook. The playbook is organized as follows:
     ![Alt text](./images/filestructure.png)  
 
-4. Usage:
+5. Usage:
 After provisioning, the playbook will automatically run the necessary tasks to set up the application. Once complete, access the application in your web browser at:
 ```bash
   http://localhost:3000
 ```
 
-5. I was able to provision up the playbook and added products listed below;
+6. I was able to provision up the playbook and added products listed below;
 ![Alt text](./images/products.png)               
