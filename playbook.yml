@@ -12,6 +12,7 @@
       tags: clone
 
   roles:
+    - docker-setup
     - client-rendering
     - mongo-db-rendering
     - server-rendering
